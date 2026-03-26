@@ -1,0 +1,27 @@
+apiVersion: ingress.jpmc.com/v1alpha1
+kind: Route
+metadata:
+  name: ea90bfea-4b50-4fff-aab9-058342e2a50b
+  namespace: ingress-system
+  labels:
+    app.kubernetes.io/managed-by: management-api
+    ingress.jpmc.com/gateway: envoy
+spec:
+  path: "/api/test"
+  hostname: "test-github.jpm.com"
+  backendUrl: "http://svc-api:8005"
+  gatewayType: envoy
+  audience: "test-audience"
+  team: "platform"
+  authnMechanism: "bearer"
+  authIssuer: ""
+  tlsRequired: true
+  targetFleet: "test-github.jpm.com"
+  methods:
+    - GET
+    - POST
+    - PUT
+    - DELETE
+  healthPath: "/health"
+status:
+  phase: Pending
